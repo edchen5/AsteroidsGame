@@ -26,10 +26,7 @@ public void keyPressed()
 	}
 	if(key == 'w')
 	{
-		if(bob.myDirectionX < 10)
-		{
-			bob.accelerate(2);
-		}
+		bob.accelerate(2);
 	}
 	if(key == 's')
 	{
