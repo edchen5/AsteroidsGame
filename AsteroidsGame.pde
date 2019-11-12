@@ -1,15 +1,26 @@
 Spaceship bob;
+Star [] joe = new Star[500];
 
 public void setup() 
 {
 	size(500, 500);
   	bob = new Spaceship();
+  	for(int i = 0; i < joe.length; i++)
+  	{
+  		joe[i] = new Star();  
+  	}
   	smooth();
 }
 
 public void draw() 
 {
 	background(0);
+  	
+  	for(int i = 0; i < joe.length; i++)
+  	{
+  		joe[i].show();
+  	}
+
   	bob.show();
   	bob.move();
 }
@@ -30,7 +41,8 @@ public void keyPressed()
 	}
 	if(key == 's')
 	{
-		bob.accelerate(-2);
+		
+		bob.accelerate(2);
 	}
 	if(key == 'h')
 	{
