@@ -1,14 +1,16 @@
-Spaceship bob;
+Spaceship bob = new Spaceship();
 Star [] joe = new Star[500];
 
 public void setup() 
 {
 	size(500, 500);
-  	bob = new Spaceship();
+  	
+
   	for(int i = 0; i < joe.length; i++)
   	{
   		joe[i] = new Star();  
   	}
+
   	smooth();
 }
 
@@ -27,6 +29,7 @@ public void draw()
 
 public void keyPressed()
 {
+	
 	if(key == 'd')
 	{
 		bob.turn(-10);
@@ -41,14 +44,15 @@ public void keyPressed()
 	}
 	if(key == 's')
 	{
-		
 		bob.accelerate(2);
 	}
-	if(key == 'h')
+	
+	if(key == 'q')
 	{
-		bob.myCenterX = (int)(Math.random() * 500);
-		bob.myCenterY = (int)(Math.random() * 500);
-		bob.myDirectionX = 0;
-		bob.myDirectionY = 0;
+		bob.setCenX((Math.random() * 500));
+		bob.setCenY((Math.random() * 500));
+		bob.setPointDir(Math.random() * 360);
+		bob.setDirX(0);
+		bob.setDirY(0);
 	}
 }
