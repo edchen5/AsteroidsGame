@@ -1,6 +1,12 @@
 Spaceship bob = new Spaceship();
 Star [] joe = new Star[500];
 
+boolean left = false;
+boolean right = false;
+boolean up = false;
+boolean down = false;
+
+
 public void setup() 
 {
 	size(500, 500);
@@ -25,6 +31,46 @@ public void draw()
 
   	bob.show();
   	bob.move();
+
+  	if(left == true)
+	{
+		bob.turn(-10);
+	}
+
+	if(right == true)
+	{
+		bob.turn(10);
+	}
+
+	if(up == true)
+	{
+		bob.accelerate(0.5);
+	}
+	
+	if(down == true)
+	{
+		bob.accelerate(-0.5);
+	}
+}
+
+public void keyReleased()
+{
+	if(key == 'd')
+	{
+		left = false;
+	}
+	if(key == 'w')
+	{
+		up = false;
+	}
+	if(key == 'a')
+	{
+		right = false;
+	}
+	if(key == 's')
+	{
+		down = false;
+	}
 }
 
 public void keyPressed()
@@ -32,19 +78,19 @@ public void keyPressed()
 	
 	if(key == 'd')
 	{
-		bob.turn(-10);
-	}
-	if(key == 'a')
-	{
-		bob.turn(10);
+		left = true;
 	}
 	if(key == 'w')
 	{
-		bob.accelerate(2);
+		up = true;
+	}
+	if(key == 'a')
+	{
+		right = true;
 	}
 	if(key == 's')
 	{
-		bob.accelerate(2);
+		down = true;
 	}
 	
 	if(key == 'q')
@@ -55,4 +101,6 @@ public void keyPressed()
 		bob.setDirX(0);
 		bob.setDirY(0);
 	}
+
+	
 }
