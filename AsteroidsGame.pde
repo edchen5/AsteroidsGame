@@ -11,7 +11,6 @@ public void setup()
 {
 	size(500, 500);
   	
-
   	for(int i = 0; i < joe.length; i++)
   	{
   		joe[i] = new Star();  
@@ -34,22 +33,28 @@ public void draw()
 
   	if(left == true)
 	{
-		bob.turn(-10);
+		bob.turn(8);
 	}
 
 	if(right == true)
 	{
-		bob.turn(10);
+		bob.turn(-8);
 	}
 
 	if(up == true)
 	{
-		bob.accelerate(0.2);
+		
+		bob.setDirX(0);
+		bob.setDirY(0);
+		bob.accelerate(2);
 	}
 	
 	if(down == true)
 	{
-		bob.accelerate(-0.2);
+		
+		bob.setDirX(0);
+		bob.setDirY(0);
+		bob.accelerate(-2);
 	}
 }
 
@@ -59,22 +64,20 @@ public void keyReleased()
 	{
 		left = false;
 	}
+
 	if(key == 'w')
 	{
 		up = false;
 	}
+
 	if(key == 'a')
 	{
 		right = false;
 	}
+
 	if(key == 's')
 	{
 		down = false;
-	}
-	if(key == 'e')
-	{
-		bob.setDirX(0);
-		bob.setDirY(0);
 	}
 }
 
