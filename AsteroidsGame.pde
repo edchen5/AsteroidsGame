@@ -44,12 +44,12 @@ public void draw()
 
 	if(up == true)
 	{
-		bob.accelerate(0.5);
+		bob.accelerate(0.2);
 	}
 	
 	if(down == true)
 	{
-		bob.accelerate(-0.5);
+		bob.accelerate(-0.2);
 	}
 }
 
@@ -70,6 +70,11 @@ public void keyReleased()
 	if(key == 's')
 	{
 		down = false;
+	}
+	if(key == 'e')
+	{
+		bob.setDirX(0);
+		bob.setDirY(0);
 	}
 }
 
