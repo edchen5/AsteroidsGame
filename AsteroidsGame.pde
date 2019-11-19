@@ -1,5 +1,6 @@
 Spaceship bob = new Spaceship();
 Star [] joe = new Star[500];
+Asteroid [] moe = new Asteroid[1];
 
 boolean left = false;
 boolean right = false;
@@ -16,6 +17,11 @@ public void setup()
   		joe[i] = new Star();  
   	}
 
+  	for(int i = 0; i < moe.length; i++)
+  	{
+  		moe[i] = new Asteroid();
+  	}
+  	
   	smooth();
 }
 
@@ -26,6 +32,12 @@ public void draw()
   	for(int i = 0; i < joe.length; i++)
   	{
   		joe[i].show();
+  	}
+
+  	for(int i = 0; i < moe.length; i++)
+  	{
+  		moe[i].show();
+  		moe[i].move();
   	}
 
   	bob.show();
