@@ -2,7 +2,7 @@ class Spaceship extends Floater
 {   
     public Spaceship()
     {
-    	corners = 3;
+    	corners = 4;
 
     	xCorners = new int[corners];
     	yCorners = new int[corners];
@@ -13,6 +13,8 @@ class Spaceship extends Floater
     	yCorners[1] = 0;
     	xCorners[2] = -8;
     	yCorners[2] = 8;
+        xCorners[3] = -2;
+        yCorners[3] = 0;
 
     	myColor = color(64, 224, 208);
     	myCenterX = 250;
@@ -20,35 +22,6 @@ class Spaceship extends Floater
     	myDirectionX = 0;
     	myDirectionY = 0;
     	myPointDirection = -90;
-    }
-
-    public void show ()   
-    {             
-        fill(myColor);   
-        stroke(myColor);    
-        translate((float)myCenterX, (float)myCenterY);
-        float dRadians = (float)(myPointDirection*(Math.PI/180));
-        rotate(dRadians);
-
-        beginShape();
-
-        for (int nI = 0; nI < corners; nI++)
-        {
-          vertex(xCorners[nI], yCorners[nI]);
-        }
-
-        endShape(CLOSE);
-
-        if(key == 'w')
-        {
-            stroke(255, 69, 0);
-            line(-10, 6, -14, 6);
-            line(-10, 0, -14 ,0);
-            line(-10, -6, -14, -6);
-        }
-
-        rotate(-1*dRadians);
-        translate(-1*(float)myCenterX, -1*(float)myCenterY);
     }
 
     public void setDirX(double x)
@@ -74,5 +47,15 @@ class Spaceship extends Floater
     public void setPointDir(double dir)
     {
         myPointDirection = dir;
+    }
+
+    public double getCentX()
+    {
+        return myCenterX;
+    }
+
+    public double getCentY()
+    {
+        return myCenterY;
     }
 }

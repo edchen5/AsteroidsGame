@@ -1,6 +1,6 @@
-Spaceship bob = new Spaceship();
-Star [] joe = new Star[500];
-ArrayList <Asteroid> moe = new ArrayList <Asteroid>();
+Spaceship ship = new Spaceship();
+Star [] sky = new Star[500];
+ArrayList <Asteroid> roids = new ArrayList <Asteroid>();
 
 boolean left = false;
 boolean right = false;
@@ -12,14 +12,14 @@ public void setup()
 {
 	size(500, 500);
   	
-  	for(int i = 0; i < joe.length; i++)
+  	for(int i = 0; i < sky.length; i++)
   	{
-  		joe[i] = new Star();  
+  		sky[i] = new Star();  
   	}
 
-  	for(int i = 0; i < 10; i++)
+  	for(int i = 0; i < 1; i++)
   	{
-  		moe.add(new Asteroid());
+  		roids.add(new Asteroid());
   	}
   	
   	smooth();
@@ -29,44 +29,44 @@ public void draw()
 {
 	background(0);
   	
-  	for(int i = 0; i < joe.length; i++)
+  	for(int i = 0; i < sky.length; i++)
   	{
-  		joe[i].show();
+  		sky[i].show();
   	}
 
-  	for(int i = 0; i < moe.size(); i++)
+  	for(int i = 0; i < roids.size(); i++)
   	{
-  		moe.get(i).show();
-    	moe.get(i).move();
+  		roids.get(i).show();
+    	roids.get(i).move();
   	}
 
-  	bob.show();
-  	bob.move();
+  	ship.show();
+  	ship.move();
 
   	if(left == true)
 	{
-		bob.turn(8);
+		ship.turn(8);
 	}
 
 	if(right == true)
 	{
-		bob.turn(-8);
+		ship.turn(-8);
 	}
 
 	if(up == true)
 	{
 		
-		bob.setDirX(0);
-		bob.setDirY(0);
-		bob.accelerate(2);
+		ship.setDirX(0);
+		ship.setDirY(0);
+		ship.accelerate(2);
 	}
 	
 	if(down == true)
 	{
 		
-		bob.setDirX(0);
-		bob.setDirY(0);
-		bob.accelerate(-2);
+		ship.setDirX(0);
+		ship.setDirY(0);
+		ship.accelerate(-2);
 	}
 }
 
@@ -115,11 +115,11 @@ public void keyPressed()
 	
 	if(key == 'q')
 	{
-		bob.setCenX((Math.random() * 500));
-		bob.setCenY((Math.random() * 500));
-		bob.setPointDir(Math.random() * 360);
-		bob.setDirX(0);
-		bob.setDirY(0);
+		ship.setCenX((Math.random() * 500));
+		ship.setCenY((Math.random() * 500));
+		ship.setPointDir(Math.random() * 360);
+		ship.setDirX(0);
+		ship.setDirY(0);
 	}
 
 	
