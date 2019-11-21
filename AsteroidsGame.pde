@@ -7,6 +7,7 @@ boolean right = false;
 boolean up = false;
 boolean down = false;
 
+int maxRoid = 10;
 
 public void setup() 
 {
@@ -17,7 +18,7 @@ public void setup()
   		sky[i] = new Star();  
   	}
 
-  	for(int i = 0; i < 1; i++)
+  	for(int i = 0; i < 10; i++)
   	{
   		roids.add(new Asteroid());
   	}
@@ -38,6 +39,21 @@ public void draw()
   	{
   		roids.get(i).show();
     	roids.get(i).move();
+
+    	if(dist( (float) roids.get(i).getCentX(), (float) roids.get(i).getCentY(), (float) ship.getCentX(), (float) ship.getCentY()) < 25)
+    	{
+    		roids.remove(i);
+
+    		if(roids.size() == 0 && maxRoid < 50)
+    		{
+    			maxRoid += 2;
+
+    			for(int j = 0; j < maxRoid; j++)
+    			{
+    				roids.add(new Asteroid());
+    			}
+    		}
+    	}
   	}
 
   	ship.show();
@@ -63,7 +79,6 @@ public void draw()
 	
 	if(down == true)
 	{
-		
 		ship.setDirX(0);
 		ship.setDirY(0);
 		ship.accelerate(-2);
