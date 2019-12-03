@@ -1,5 +1,8 @@
 Spaceship ship = new Spaceship();
 Star [] sky = new Star[500];
+
+ArrayList <Bullet> shot = new ArrayList <Bullet>();
+
 ArrayList <Asteroid> roids = new ArrayList <Asteroid>();
 
 boolean left = false;
@@ -83,6 +86,14 @@ public void draw()
 		ship.setDirY(0);
 		ship.accelerate(-2);
 	}
+
+	
+	for(int i = 0; i < shot.size(); i++)
+	{
+		shot.get(i).show();
+		shot.get(i).move();
+	}
+	
 }
 
 public void keyReleased()
@@ -136,6 +147,10 @@ public void keyPressed()
 		ship.setDirX(0);
 		ship.setDirY(0);
 	}
+}
 
+public void mousePressed()
+{
+	shot.add(new Bullet(ship));
 	
 }
