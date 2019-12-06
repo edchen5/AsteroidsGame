@@ -14,6 +14,9 @@ boolean shooting = false;
 
 int maxRoid = 10;
 
+int hp = 3;
+boolean dead = false;
+
 public void setup() 
 {
 	size(500, 600);
@@ -23,7 +26,7 @@ public void setup()
   		sky[i] = new Star();  
   	}
 
-  	for(int i = 0; i < 10; i++)
+  	for(int i = 0; i < maxRoid; i++)
   	{
   		roids.add(new Asteroid());
   	}
@@ -44,11 +47,37 @@ public void draw()
   	stroke(255);
   	rect(0, 500, 500, 100);
 
-  	for(int x = 0; x <= 100; x += 50)
+  	
+	
+  	if(hp == 3)
   	{
-  		noStroke();
+  		for(int x = 10; x <= 110; x += 50)
+	  	{
+	  		fill(255, 0, 0);
+	  		rect(x, 520, 50, 10);
+	  	}
+  	}
+  	else if(hp == 2)
+	{	
+		for(int x = 10; x <= 60; x += 50)
+	  	{
+	  		fill(255, 0, 0);
+	  		rect(x, 520, 50, 10);
+	  	}
+	}
+  	else if(hp == 1)
+  	{
   		fill(255, 0, 0);
-  		rect(x, 500, 50, 50);
+  		rect(10, 520, 50, 10);
+  	}
+  	else
+  	{
+  		noLoop();
+  		dead = true;
+  		textAlign(CENTER);
+  		textSize(50);
+  		fill(255);
+  		text("GAME OVER", 250, 250);
   	}
 
   	for(int j = 0; j < roids.size(); j++)
@@ -56,9 +85,10 @@ public void draw()
   		roids.get(j).show();
     	roids.get(j).move();
 
-    	if(dist( (float) roids.get(j).getCentX(), (float) roids.get(j).getCentY(), (float) ship.getCentX(), (float) ship.getCentY()) < 25)
+    	if(dist( (float) roids.get(j).getCentX(), (float) roids.get(j).getCentY(), (float) ship.getCentX(), (float) ship.getCentY()) < 25 && frameCount > 30)
     	{
     		roids.remove(j);
+    		hp--;
     	}
 	}
 
@@ -98,6 +128,7 @@ public void draw()
 
   	ship.show();
   	ship.move();
+
 
   	if(left == true)
 	{
@@ -193,5 +224,23 @@ public void keyPressed()
 	if(key == ' ')
 	{
 		shooting = true;
+	}
+
+	if(key == 'r' && dead == true)
+	{
+		loop();
+		dead = false;
+		hp = 3;
+		ship.setCenX(250);
+		ship.setCenY(250);
+		ship.setPointDir(-90);
+
+		if(roids.size() < 10)
+		{
+			for(int i = roids.size(); i < 10; i++)
+			{
+				roids.add(new Asteroid());
+			}
+		}
 	}
 }

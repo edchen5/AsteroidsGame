@@ -37,14 +37,14 @@ class Floater //Do NOT modify the Floater class! Make changes in the Spaceship c
     {     
       myCenterX = width;    
     }    
-    if(myCenterY > 480)
+    if(myCenterY > 490)
     {    
       myCenterY = 0;    
     } 
     
     else if (myCenterY < 0)
     {     
-      myCenterY = 480;    
+      myCenterY = 490;    
     }   
   }   
   public void show ()  //Draws the floater at the current position  
