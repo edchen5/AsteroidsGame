@@ -37,12 +37,12 @@ class Spaceship extends Floater
         myDirectionY = y;
     }
 
-    public void setCenX(double x)
+    public void setCentX(double x)
     {
         myCenterX = x;
     }
 
-    public void setCenY(double y)
+    public void setCentY(double y)
     {
         myCenterY = y;
     }

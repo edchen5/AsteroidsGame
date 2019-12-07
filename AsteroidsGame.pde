@@ -78,6 +78,8 @@ public void draw()
   		textSize(50);
   		fill(255);
   		text("GAME OVER", 250, 250);
+  		textSize(25);
+  		text("Press R to restart", 250, 325);
   	}
 
   	for(int j = 0; j < roids.size(); j++)
@@ -214,8 +216,8 @@ public void keyPressed()
 	
 	if(key == 'q')
 	{
-		ship.setCenX((Math.random() * 500));
-		ship.setCenY((Math.random() * 500));
+		ship.setCentX((Math.random() * 500));
+		ship.setCentY((Math.random() * 500));
 		ship.setPointDir(Math.random() * 360);
 		ship.setDirX(0);
 		ship.setDirY(0);
@@ -231,8 +233,8 @@ public void keyPressed()
 		loop();
 		dead = false;
 		hp = 3;
-		ship.setCenX(250);
-		ship.setCenY(250);
+		ship.setCentX(250);
+		ship.setCentY(250);
 		ship.setPointDir(-90);
 
 		if(roids.size() < 10)
