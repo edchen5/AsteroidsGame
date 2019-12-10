@@ -47,50 +47,21 @@ public void draw()
   	stroke(255);
   	rect(0, 500, 500, 100);
 
-  	
+  	textSize(15);
+  	text("Number of Asteroids: " + roids.size(), 300, 530);
 	
-  	if(hp == 3)
-  	{
-  		for(int x = 10; x <= 110; x += 50)
-	  	{
-	  		fill(255, 0, 0);
-	  		rect(x, 520, 50, 10);
-	  	}
-  	}
-  	else if(hp == 2)
-	{	
-		for(int x = 10; x <= 60; x += 50)
-	  	{
-	  		fill(255, 0, 0);
-	  		rect(x, 520, 50, 10);
-	  	}
-	}
-  	else if(hp == 1)
-  	{
-  		fill(255, 0, 0);
-  		rect(10, 520, 50, 10);
-  	}
-  	else
-  	{
-  		noLoop();
-  		dead = true;
-  		textAlign(CENTER);
-  		textSize(50);
-  		fill(255);
-  		text("GAME OVER", 250, 250);
-  		textSize(25);
-  		text("Press R to restart", 250, 325);
-  	}
-
   	for(int j = 0; j < roids.size(); j++)
   	{
   		roids.get(j).show();
     	roids.get(j).move();
 
-    	if(dist( (float) roids.get(j).getCentX(), (float) roids.get(j).getCentY(), (float) ship.getCentX(), (float) ship.getCentY()) < 25 && frameCount > 30)
+    	if(dist( (float) roids.get(j).getCentX(), (float) roids.get(j).getCentY(), (float) ship.getCentX(), (float) ship.getCentY()) < 25)
     	{
     		roids.remove(j);
-    		hp--;
+    		if(frameCount > 60)
+    		{
+    			hp--;
+    		}
     	}
 	}
 
@@ -165,6 +136,39 @@ public void draw()
 
 		}
 	}
+
+	if(hp == 3)
+  	{
+  		for(int x = 10; x <= 110; x += 50)
+	  	{
+	  		fill(255, 0, 0);
+	  		rect(x, 520, 50, 10);
+	  	}
+  	}
+  	else if(hp == 2)
+	{	
+		for(int x = 10; x <= 60; x += 50)
+	  	{
+	  		fill(255, 0, 0);
+	  		rect(x, 520, 50, 10);
+	  	}
+	}
+  	else if(hp == 1)
+  	{
+  		fill(255, 0, 0);
+  		rect(10, 520, 50, 10);
+  	}
+  	else
+  	{
+  		noLoop();
+  		dead = true;
+  		textAlign(CENTER);
+  		textSize(50);
+  		fill(255);
+  		text("GAME OVER", 250, 250);
+  		textSize(25);
+  		text("Press R to restart", 250, 325);
+  	}
 }
 
 public void keyReleased()
@@ -233,13 +237,16 @@ public void keyPressed()
 		loop();
 		dead = false;
 		hp = 3;
+		frameCount = 0;
 		ship.setCentX(250);
 		ship.setCentY(250);
 		ship.setPointDir(-90);
+		ship.setDirX(0);
+		ship.setDirY(0);
 
 		if(roids.size() < 10)
 		{
-			for(int i = roids.size(); i < 10; i++)
+			for(int i = roids.size(); i <= 10; i++)
 			{
 				roids.add(new Asteroid());
 			}

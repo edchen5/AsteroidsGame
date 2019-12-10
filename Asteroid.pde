@@ -62,7 +62,7 @@ class Asteroid extends Floater
         {     
           myCenterX = 0;    
         }    
-        else if (myCenterX<0)
+        else if (myCenterX < 0)
         {     
           myCenterX = width;    
         }    
