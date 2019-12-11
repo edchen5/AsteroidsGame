@@ -89,14 +89,14 @@ public void draw()
 		}
 	}
 
-	if(roids.size() == 0 && maxRoid <= 50)
+	if(roids.size() == 0 && maxRoid <= 50 && dead == false)
 	{
-	    	maxRoid += 2;
+    	maxRoid += 2;
 
-	    	for(int k = 0; k < maxRoid; k++)
-	    	{
-	    		roids.add(new Asteroid());
-	  	 	} 
+    	for(int k = 0; k < maxRoid; k++)
+    	{
+    		roids.add(new Asteroid());
+  	 	} 
 	}
 
   	ship.show();
@@ -235,18 +235,22 @@ public void keyPressed()
 	if(key == 'r' && dead == true)
 	{
 		loop();
+
 		dead = false;
 		hp = 3;
 		frameCount = 0;
+
 		ship.setCentX(250);
 		ship.setCentY(250);
 		ship.setPointDir(-90);
 		ship.setDirX(0);
 		ship.setDirY(0);
 
+		maxRoid = 10;
+
 		if(roids.size() < 10)
 		{
-			for(int i = roids.size(); i <= 10; i++)
+			for(int i = roids.size(); i < 10; i++)
 			{
 				roids.add(new Asteroid());
 			}
