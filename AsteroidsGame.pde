@@ -17,6 +17,9 @@ int maxRoid = 10;
 int hp = 3;
 boolean dead = false;
 
+int score = 0;
+int highScore = 0;
+
 public void setup() 
 {
 	size(500, 600);
@@ -47,9 +50,6 @@ public void draw()
   	stroke(255);
   	rect(0, 500, 500, 100);
 
-  	textSize(15);
-  	text("Number of Asteroids: " + roids.size(), 300, 530);
-	
   	for(int j = 0; j < roids.size(); j++)
   	{
   		roids.get(j).show();
@@ -84,10 +84,16 @@ public void draw()
     		{
     			roids.remove(j);
     			shot.remove(i);
+    			score += 100;
     			break;
 			}
 		}
 	}
+
+	textSize(15);
+	fill(255);
+	text("Score: " + score, 310, 560);
+  	text("Number of Asteroids: " + roids.size(), 310, 530);
 
 	if(roids.size() == 0 && maxRoid <= 50 && dead == false)
 	{
@@ -99,7 +105,7 @@ public void draw()
   	 	} 
 
   	 	frameCount = 0;
-  	 	
+
   	 	if(hp < 3)
   	 	{
   	 		hp++;
@@ -171,10 +177,18 @@ public void draw()
   		dead = true;
   		textAlign(CENTER);
   		textSize(50);
-  		fill(255);
+  		fill(255, 0, 0);
   		text("GAME OVER", 250, 250);
+  		fill(255);
   		textSize(25);
-  		text("Press R to restart", 250, 325);
+  		text("Press R to restart", 250, 300);
+
+  		if(highScore < score)
+  		{
+  			highScore = score;
+  		}
+
+  		text("High Score:" + highScore, 250, 350);
   	}
 }
 
