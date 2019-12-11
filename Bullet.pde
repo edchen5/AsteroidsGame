@@ -21,6 +21,8 @@ class Bullet extends Floater
     	fill(myColor);
 		stroke(myColor);
 		ellipse((float) myCenterX, (float) myCenterY, 5, 5);
+
+		
 	}
 
 	public double getCentX()

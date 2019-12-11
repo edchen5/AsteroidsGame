@@ -70,7 +70,7 @@ public void draw()
 		shot.get(i).show();
 		shot.get(i).move();
 
-		if(shot.get(i).getCentX() == 500 || shot.get(i).getCentX() == 0 || shot.get(i).getCentY() == 500 || shot.get(i).getCentY() == 0)
+		if(shot.get(i).getCentX() >= 485 || shot.get(i).getCentX() <= 0 || shot.get(i).getCentY() >= 485 || shot.get(i).getCentY() <= 0)
 		{
 			shot.remove(i);
 		}
@@ -97,6 +97,13 @@ public void draw()
     	{
     		roids.add(new Asteroid());
   	 	} 
+
+  	 	frameCount = 0;
+  	 	
+  	 	if(hp < 3)
+  	 	{
+  	 		hp++;
+  	 	}
 	}
 
   	ship.show();

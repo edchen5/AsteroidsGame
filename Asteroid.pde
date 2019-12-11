@@ -57,23 +57,9 @@ class Asteroid extends Floater
 	{
 		turn(rotSpeed);
 		super.move();
-
-        if(myCenterX > width)
-        {     
-          myCenterX = 0;    
-        }    
-        else if (myCenterX < 0)
-        {     
-          myCenterX = width;    
-        }    
-        if(myCenterY > 485)
-        {    
-          myCenterY = 0;    
-        } 
-        else if (myCenterY < 0)
-        {     
-          myCenterY = 485;    
-        }   
+  
+       
+        
 	}
 
     public double getCentX()
