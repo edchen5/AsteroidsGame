@@ -94,6 +94,8 @@ public void draw()
 	fill(255);
 	text("Score: " + score, 310, 560);
   	text("Number of Asteroids: " + roids.size(), 310, 530);
+  	text("HP", 10, 530);
+  	text(hp + "/3", 200, 530);
 
 	if(roids.size() == 0 && maxRoid <= 50 && dead == false)
 	{
@@ -152,7 +154,7 @@ public void draw()
 
 	if(hp == 3)
   	{
-  		for(int x = 10; x <= 110; x += 50)
+  		for(int x = 35; x <= 135; x += 50)
 	  	{
 	  		fill(255, 0, 0);
 	  		rect(x, 520, 50, 10);
@@ -160,7 +162,7 @@ public void draw()
   	}
   	else if(hp == 2)
 	{	
-		for(int x = 10; x <= 60; x += 50)
+		for(int x = 35; x <= 85; x += 50)
 	  	{
 	  		fill(255, 0, 0);
 	  		rect(x, 520, 50, 10);
@@ -169,7 +171,7 @@ public void draw()
   	else if(hp == 1)
   	{
   		fill(255, 0, 0);
-  		rect(10, 520, 50, 10);
+  		rect(35, 520, 50, 10);
   	}
   	else
   	{
@@ -179,8 +181,8 @@ public void draw()
   		textSize(50);
   		fill(255, 0, 0);
   		text("GAME OVER", 250, 250);
-  		fill(255);
-  		textSize(25);
+  		fill(255, 250, 250);
+  		textSize(20);
   		text("Press R to restart", 250, 300);
 
   		if(highScore < score)
@@ -188,7 +190,10 @@ public void draw()
   			highScore = score;
   		}
 
-  		text("High Score:" + highScore, 250, 350);
+  		text("Score: " + score, 250, 330);
+  		text("High Score: " + highScore, 250, 360);
+  		text("Number of Asteroids Destroyed: " + score / 100, 250, 390);
+  		text("Most Asteroids Destroyed: " + highScore / 100, 250, 420);
   	}
 }
 
@@ -268,6 +273,7 @@ public void keyPressed()
 		ship.setDirY(0);
 
 		maxRoid = 10;
+		score = 0;
 
 		if(roids.size() < 10)
 		{
