@@ -191,9 +191,8 @@ public void draw()
   			highScore = score;
   		}
 
-  		text("High Score: " + highScore, 250, 360);
-  		text("Number of Asteroids Destroyed: " + score / 100, 250, 390);
-  		text("Most Asteroids Destroyed: " + highScore / 100, 250, 420);
+  		text("Number of Asteroids Destroyed: " + score / 100, 250, 330);
+  		text("Most Asteroids Destroyed: " + highScore / 100, 250, 360);
   	}
 }
 
