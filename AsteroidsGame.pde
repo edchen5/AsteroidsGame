@@ -92,7 +92,8 @@ public void draw()
 
 	textSize(15);
 	fill(255);
-	text("Score: " + score, 310, 560);
+	text("Score: " + score, 80, 560);
+	text("High Score: " + highScore, 310, 560);
   	text("Number of Asteroids: " + roids.size(), 310, 530);
   	text("HP", 10, 530);
   	text(hp + "/3", 200, 530);
@@ -190,7 +191,6 @@ public void draw()
   			highScore = score;
   		}
 
-  		text("Score: " + score, 250, 330);
   		text("High Score: " + highScore, 250, 360);
   		text("Number of Asteroids Destroyed: " + score / 100, 250, 390);
   		text("Most Asteroids Destroyed: " + highScore / 100, 250, 420);
