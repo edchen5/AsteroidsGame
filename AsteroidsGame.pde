@@ -25,14 +25,10 @@ public void setup()
 	size(500, 600);
   
   	for(int i = 0; i < sky.length; i++)
-  	{
   		sky[i] = new Star();  
-  	}
 
   	for(int i = 0; i < maxRoid; i++)
-  	{
   		roids.add(new Asteroid());
-  	}
   	
   	smooth();
 }
@@ -42,10 +38,8 @@ public void draw()
 	background(0);
   	
   	for(int i = 0; i < sky.length; i++)
-  	{
   		sky[i].show();
-  	}
-
+  	
   	noFill();
   	stroke(255);
   	rect(0, 500, 500, 100);
@@ -58,10 +52,9 @@ public void draw()
     	if(dist( (float) roids.get(j).getCentX(), (float) roids.get(j).getCentY(), (float) ship.getCentX(), (float) ship.getCentY()) < 25)
     	{
     		roids.remove(j);
+
     		if(frameCount > 60)
-    		{
     			hp--;
-    		}
     	}
 	}
 
@@ -71,9 +64,7 @@ public void draw()
 		shot.get(i).move();
 
 		if(shot.get(i).getCentX() >= 485 || shot.get(i).getCentX() <= 0 || shot.get(i).getCentY() >= 485 || shot.get(i).getCentY() <= 0)
-		{
 			shot.remove(i);
-		}
 	}
 
 	for(int i = 0; i < shot.size(); i++)
@@ -98,77 +89,61 @@ public void draw()
   	text("HP", 10, 530);
   	text(hp + "/3", 200, 530);
 
-	if(roids.size() == 0 && maxRoid <= 50 && dead == false)
+	if(roids.size() == 0 && maxRoid <= 50 && !dead)
 	{
     	maxRoid += 2;
 
     	for(int k = 0; k < maxRoid; k++)
-    	{
     		roids.add(new Asteroid());
-  	 	} 
 
   	 	frameCount = 0;
 
   	 	if(hp < 3)
-  	 	{
   	 		hp++;
-  	 	}
 	}
 
   	ship.show();
   	ship.move();
 
-
-  	if(left == true)
-	{
+  	if(left)
 		ship.turn(8);
-	}
-
-	if(right == true)
-	{
+	
+	if(right)
 		ship.turn(-8);
-	}
 
-	if(up == true)
+	if(up)
 	{
-		
 		ship.setDirX(0);
 		ship.setDirY(0);
 		ship.accelerate(2);
 	}
 	
-	if(down == true)
+	if(down)
 	{
 		ship.setDirX(0);
 		ship.setDirY(0);
 		ship.accelerate(-2);
 	}
 	
-	if(shooting == true)
-	{
+	if(shooting)
 		if(frameCount % 6 == 0)
-		{
 			shot.add(new Bullet(ship));
-
-		}
-	}
+	
 
 	if(hp == 3)
-  	{
   		for(int x = 35; x <= 135; x += 50)
 	  	{
 	  		fill(255, 0, 0);
 	  		rect(x, 520, 50, 10);
 	  	}
-  	}
-  	else if(hp == 2)
-	{	
+  	
+  	else if(hp == 2)	
 		for(int x = 35; x <= 85; x += 50)
 	  	{
 	  		fill(255, 0, 0);
 	  		rect(x, 520, 50, 10);
 	  	}
-	}
+	
   	else if(hp == 1)
   	{
   		fill(255, 0, 0);
@@ -199,49 +174,34 @@ public void draw()
 public void keyReleased()
 {
 	if(key == 'd')
-	{
 		left = false;
-	}
 
 	if(key == 'w')
-	{
 		up = false;
-	}
-
+	
 	if(key == 'a')
-	{
 		right = false;
-	}
 
 	if(key == 's')
-	{
 		down = false;
-	}
+
 	if(key == ' ')
-	{
 		shooting = false;
-	}
 }
 
 public void keyPressed()
 {
-	
 	if(key == 'd')
-	{
 		left = true;
-	}
+	
 	if(key == 'w')
-	{
 		up = true;
-	}
+	
 	if(key == 'a')
-	{
 		right = true;
-	}
+	
 	if(key == 's')
-	{
 		down = true;
-	}
 	
 	if(key == 'q')
 	{
@@ -253,11 +213,9 @@ public void keyPressed()
 	}
 
 	if(key == ' ')
-	{
 		shooting = true;
-	}
 
-	if(key == 'r' && dead == true)
+	if(key == 'r' && dead)
 	{
 		loop();
 
@@ -275,11 +233,7 @@ public void keyPressed()
 		score = 0;
 
 		if(roids.size() < 10)
-		{
 			for(int i = roids.size(); i < 10; i++)
-			{
 				roids.add(new Asteroid());
-			}
-		}
 	}
 }
